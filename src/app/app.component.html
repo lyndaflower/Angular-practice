@@ -17,5 +17,16 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul>
+<div>
+  <h1>My Goal</h1>
+  <hr>
+  <ul>
+    <div *ngFor='let goal of goals;let i = index'>
+      <li>{{goal.name}}</li>
+      <button (click)='toggleDetails(i)'>Toggle Details</button>
+      <app-goal-detail *ngIf='goal.showDescription' [goal]='goal' (iscomplete)= 'completeGoal($event,i)'></app-goal-detail>
+    </div>
+  </ul>
+  <p *ngIf='goals.length > 5'>You have too many</p>
 
 <router-outlet></router-outlet>
